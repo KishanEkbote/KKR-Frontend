@@ -30,8 +30,8 @@ const YadgirPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-indigo-100 text-gray-900">
-      <header className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white text-center py-8 shadow-lg">
-        <h1 className="text-4xl font-bold">Discover Yadgir</h1>
+      <header className="bg-gradient-to-r from-blue-800 to-indigo-700 text-white text-center py-4 md:py-8 shadow-lg">
+        <h1 className="md:text-4xl text-2xl font-bold">Discover Yadgir</h1>
         <p className="mt-2 text-lg">Experience the rich cultural heritage and historical landmarks</p>
       </header>
 
@@ -49,11 +49,11 @@ const YadgirPage = () => {
               <img
                 src={places[activeIndex].image}
                 alt={places[activeIndex].name}
-                className="w-full h-96 object-cover"
+                className="w-full md:h-96 md:object-cover object-contain h-40"
               />
             </div>
             <div className="md:w-1/2 p-8 flex flex-col justify-center">
-              <h2 className="text-3xl font-bold text-blue-800 mb-4">{places[activeIndex].name}</h2>
+              <h2 className="md:text-3xl text-xl font-bold text-blue-800 mb-4">{places[activeIndex].name}</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-6">{places[activeIndex].description}</p>
               <div className="flex space-x-4">
                 <button 
@@ -89,7 +89,7 @@ const YadgirPage = () => {
                 <img
                   src={place.image}
                   alt={place.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full md:object-cover"
                 />
                 {index === activeIndex && (
                   <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
