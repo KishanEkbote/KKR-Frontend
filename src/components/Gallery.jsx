@@ -1,6 +1,4 @@
-
 import Gallery from "./components/Gallery";
-import "mdb-react-ui-kit/dist/css/mdb.min.css"; // Import MDB styles
 
 function App() {
   return (
