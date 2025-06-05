@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const places = [
   {
@@ -114,12 +115,12 @@ const Gallery = () => {
               <div className="p-4 md:p-6">
                 <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">{place.name}</h3>
                 <p className="text-gray-600 mb-4">{place.description}</p>
-                <a 
-                  href={place.link} 
+                <Link 
+                  to={place.link} 
                   className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300"
                 >
                   Explore More
-                </a>
+                </Link>
               </div>
             </div>
           ))}
