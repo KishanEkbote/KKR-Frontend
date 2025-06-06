@@ -242,7 +242,7 @@ export default function UserDashboard() {
                     onClick={() => {
                       localStorage.removeItem("userId");
                       localStorage.removeItem("authToken");
-                      navigate("/login");
+                      navigate("/blog");
                     }}
                     className="w-full py-2 px-4 rounded-lg bg-red-600 text-white mt-4 font-semibold hover:bg-red-700 transition-colors duration-200 shadow"
                   >

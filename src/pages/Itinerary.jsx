@@ -603,7 +603,7 @@ const ItineraryPlanner = () => {
                   onClick={addStop}
                   className="flex-1 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-md hover:shadow-lg flex items-center justify-center"
                 >
-                  <span className="mr-1">+</span> Add Stop
+                  <span className="mr-1"></span> Add Stop
                 </button>
                 <button
                   onClick={resetForm}
