@@ -350,59 +350,6 @@ export default function UserDashboard() {
                         </div>
                       </div>
                     </div>
-                    {/* Optional Information Section - Collapsible */}
-                    <div className="md:col-span-2">
-                      <details className="mb-2">
-                        <summary className="text-md font-semibold text-blue-700 cursor-pointer">Optional Information</summary>
-                        <div className="mt-3 pl-2 border-l-2 border-blue-200">
-                          {/* Website */}
-                          <div className="mb-3">
-                            <label className="block text-blue-700 mb-1 text-sm font-medium">Website (Optional)</label>
-                            <input
-                              type="url"
-                              value={website}
-                              onChange={(e) => setWebsite(e.target.value)}
-                              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
-                              placeholder="https://yourwebsite.com"
-                            />
-                          </div>
-                          {/* Social Links */}
-                          <div className="mb-3">
-                            <label className="block text-blue-700 mb-1 text-sm font-medium">Social Links (Optional)</label>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                              <input
-                                type="url"
-                                placeholder="Twitter URL"
-                                value={twitter}
-                                onChange={(e) => setTwitter(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
-                              />
-                              <input
-                                type="url"
-                                placeholder="Instagram URL"
-                                value={instagram}
-                                onChange={(e) => setInstagram(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
-                              />
-                              <input
-                                type="url"
-                                placeholder="Facebook URL"
-                                value={facebook}
-                                onChange={(e) => setFacebook(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
-                              />
-                              <input
-                                type="url"
-                                placeholder="LinkedIn URL"
-                                value={linkedin}
-                                onChange={(e) => setLinkedin(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </details>
-                    </div>
                     {/* Submit Button */}
                     <div className="md:col-span-2">
                       <button
