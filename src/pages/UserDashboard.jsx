@@ -201,41 +201,40 @@ export default function UserDashboard() {
     <div className="bg-gray-100 min-h-screen p-2 md:p-4">
       {isAuthenticated && (
         <div className="container mx-auto py-4 md:py-8 px-2 md:px-4">
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+          <div className="flex flex-col md:flex-row gap-6">
             {/* Sidebar */}
             <div className="md:w-1/4 w-full mb-4 md:mb-0">
-              <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
-                <div className="flex flex-col items-center mb-4 md:mb-6">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-200 p-6 rounded-2xl shadow-xl border border-blue-100">
+                <div className="flex flex-col items-center mb-6">
                   {userData?.profileImage ? (
                     <img 
                       src={`${API_PATH}${userData.profileImage}`} 
                       alt="Profile" 
-                      className="w-32 h-32 rounded-full object-cover mb-4"
+                      className="w-32 h-32 rounded-full object-cover mb-4 border-4 border-blue-200 shadow-lg"
                     />
                   ) : (
-                    <div className="w-32 h-32 rounded-full bg-gray-300 flex items-center justify-center mb-4">
-                      <span className="text-4xl text-gray-600">{userData?.name?.charAt(0) || "U"}</span>
+                    <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-200 to-blue-400 flex items-center justify-center mb-4 shadow-lg">
+                      <span className="text-4xl text-white font-bold">{userData?.name?.charAt(0) || "U"}</span>
                     </div>
                   )}
-                  <h3 className="text-xl font-bold">{userData?.name || "User"}</h3>
+                  <h3 className="text-xl font-bold text-blue-800">{userData?.name || "User"}</h3>
                 </div>
-                
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <button 
                     onClick={() => setActiveTab("profile")}
-                    className={`w-full py-2 px-4 rounded-lg ${activeTab === "profile" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+                    className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors duration-200 ${activeTab === "profile" ? "bg-blue-600 text-white shadow" : "bg-white text-blue-700 hover:bg-blue-100 border border-blue-200"}`}
                   >
                     Profile Settings
                   </button>
                   <button 
                     onClick={() => setActiveTab("blogs")}
-                    className={`w-full py-2 px-4 rounded-lg ${activeTab === "blogs" ? "bg-blue-600 text-white" : "bg-gray-200"}`}
+                    className={`w-full py-2 px-4 rounded-lg font-semibold transition-colors duration-200 ${activeTab === "blogs" ? "bg-blue-600 text-white shadow" : "bg-white text-blue-700 hover:bg-blue-100 border border-blue-200"}`}
                   >
                     Create Blog
                   </button>
                   <button 
                     onClick={() => navigate("/blog")}
-                    className="w-full py-2 px-4 rounded-lg bg-gray-200"
+                    className="w-full py-2 px-4 rounded-lg bg-white text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition-colors duration-200"
                   >
                     View All Blogs
                   </button>
@@ -245,29 +244,28 @@ export default function UserDashboard() {
                       localStorage.removeItem("authToken");
                       navigate("/login");
                     }}
-                    className="w-full py-2 px-4 rounded-lg bg-red-600 text-white mt-4"
+                    className="w-full py-2 px-4 rounded-lg bg-red-600 text-white mt-4 font-semibold hover:bg-red-700 transition-colors duration-200 shadow"
                   >
                     Logout
                   </button>
                 </div>
               </div>
             </div>
-            
             {/* Main Content */}
             <div className="md:w-3/4 w-full">
               {activeTab === "profile" && (
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
-                  <h2 className="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Profile Settings</h2>
-                  <form onSubmit={handleProfileSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
+                <div className="bg-white p-6 rounded-2xl shadow-xl border border-blue-100">
+                  <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-2"><span className="inline-block w-2 h-6 bg-blue-600 rounded-full"></span>Profile Settings</h2>
+                  <form onSubmit={handleProfileSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Essential Information Section */}
-                    <div className="md:col-span-2 border-b pb-2 md:pb-3 mb-1 md:mb-2">
-                      <h3 className="text-sm md:text-md font-semibold text-gray-700 mb-1 md:mb-2">Essential Information</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3">
+                    <div className="md:col-span-2 border-b pb-3 mb-2">
+                      <h3 className="text-md font-semibold text-blue-700 mb-2 flex items-center gap-2"><span className="inline-block w-2 h-4 bg-blue-400 rounded-full"></span>Essential Information</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {/* Profile Image */}
                         <div className="md:col-span-1">
-                          <label className="block text-gray-700 mb-1 text-sm font-medium">Profile Image</label>
+                          <label className="block text-blue-700 mb-1 text-sm font-medium">Profile Image</label>
                           <div className="flex items-center space-x-4">
-                            <label className="flex items-center cursor-pointer bg-gray-200 p-2 rounded-lg text-sm">
+                            <label className="flex items-center cursor-pointer bg-blue-100 p-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition">
                               <span className="mr-2">📷 Upload</span>
                               <input
                                 type="file"
@@ -280,52 +278,48 @@ export default function UserDashboard() {
                               <img
                                 src={URL.createObjectURL(profileImage)}
                                 alt="Preview"
-                                className="w-16 h-16 object-cover rounded-lg"
+                                className="w-16 h-16 object-cover rounded-lg border-2 border-blue-200"
                               />
                             )}
                           </div>
                         </div>
-                        
                         {/* Name */}
                         <div className="md:col-span-1">
-                          <label className="block text-gray-700 mb-1 text-sm font-medium">Name*</label>
+                          <label className="block text-blue-700 mb-1 text-sm font-medium">Name*</label>
                           <input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="w-full p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                             required
                           />
                         </div>
-                        
                         {/* Bio */}
                         <div className="md:col-span-2">
-                          <label className="block text-gray-700 mb-1 text-sm font-medium">Bio</label>
+                          <label className="block text-blue-700 mb-1 text-sm font-medium">Bio</label>
                           <textarea
                             value={bio}
                             onChange={(e) => setBio(e.target.value)}
-                            className="w-full p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                             rows="2"
                           />
                         </div>
-                        
                         {/* Location */}
                         <div className="md:col-span-1">
-                          <label className="block text-gray-700 mb-1 text-sm font-medium">Location</label>
+                          <label className="block text-blue-700 mb-1 text-sm font-medium">Location</label>
                           <input
                             type="text"
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
-                            className="w-full p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                           />
                         </div>
-                        
                         {/* Interests */}
                         <div className="md:col-span-2">
-                          <label className="block text-gray-700 mb-1 text-sm font-medium">Interests</label>
+                          <label className="block text-blue-700 mb-1 text-sm font-medium">Interests</label>
                           <div className="flex flex-wrap gap-1 mb-1 max-h-16 overflow-y-auto">
                             {interests.map((interest, index) => (
-                              <span key={index} className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-xs flex items-center">
+                              <span key={index} className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-xs flex items-center border border-blue-200">
                                 {interest}
                                 <button 
                                   type="button" 
@@ -343,12 +337,12 @@ export default function UserDashboard() {
                               value={newInterest}
                               onChange={(e) => setNewInterest(e.target.value)}
                               placeholder="Add an interest"
-                              className="flex-1 p-2 border rounded-l-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                              className="flex-1 p-2 border rounded-l-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                             />
                             <button
                               type="button"
                               onClick={handleAddInterest}
-                              className="bg-blue-600 text-white px-3 rounded-r-lg text-sm"
+                              className="bg-blue-600 text-white px-3 rounded-r-lg text-sm hover:bg-blue-700 transition"
                             >
                               Add
                             </button>
@@ -356,69 +350,64 @@ export default function UserDashboard() {
                         </div>
                       </div>
                     </div>
-                    
                     {/* Optional Information Section - Collapsible */}
                     <div className="md:col-span-2">
                       <details className="mb-2">
-                        <summary className="text-md font-semibold text-gray-700 cursor-pointer">
-                          Optional Information
-                        </summary>
-                        <div className="mt-3 pl-2 border-l-2 border-gray-200">
+                        <summary className="text-md font-semibold text-blue-700 cursor-pointer">Optional Information</summary>
+                        <div className="mt-3 pl-2 border-l-2 border-blue-200">
                           {/* Website */}
                           <div className="mb-3">
-                            <label className="block text-gray-700 mb-1 text-sm font-medium">Website (Optional)</label>
+                            <label className="block text-blue-700 mb-1 text-sm font-medium">Website (Optional)</label>
                             <input
                               type="url"
                               value={website}
                               onChange={(e) => setWebsite(e.target.value)}
-                              className="w-full p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                               placeholder="https://yourwebsite.com"
                             />
                           </div>
-                          
                           {/* Social Links */}
                           <div className="mb-3">
-                            <label className="block text-gray-700 mb-1 text-sm font-medium">Social Links (Optional)</label>
+                            <label className="block text-blue-700 mb-1 text-sm font-medium">Social Links (Optional)</label>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                               <input
                                 type="url"
                                 placeholder="Twitter URL"
                                 value={twitter}
                                 onChange={(e) => setTwitter(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                               />
                               <input
                                 type="url"
                                 placeholder="Instagram URL"
                                 value={instagram}
                                 onChange={(e) => setInstagram(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                               />
                               <input
                                 type="url"
                                 placeholder="Facebook URL"
                                 value={facebook}
                                 onChange={(e) => setFacebook(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                               />
                               <input
                                 type="url"
                                 placeholder="LinkedIn URL"
                                 value={linkedin}
                                 onChange={(e) => setLinkedin(e.target.value)}
-                                className="p-2 border rounded-lg focus:ring-1 focus:ring-blue-500 text-sm"
+                                className="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm bg-blue-50"
                               />
                             </div>
                           </div>
                         </div>
                       </details>
                     </div>
-                    
                     {/* Submit Button */}
                     <div className="md:col-span-2">
                       <button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors text-sm"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors text-base shadow-md mt-2"
                       >
                         Save Profile
                       </button>
@@ -426,17 +415,16 @@ export default function UserDashboard() {
                   </form>
                 </div>
               )}
-              
               {activeTab === "blogs" && (
-                <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg">
-                  <h2 className="text-lg md:text-2xl font-bold text-gray-800 mb-2 md:mb-4">Create a Blog</h2>
-                  <form onSubmit={handleBlogSubmit} className="space-y-2 md:space-y-4">
-                  <input
+                <div className="bg-white p-6 rounded-2xl shadow-xl border border-blue-100">
+                  <h2 className="text-2xl font-bold text-blue-800 mb-4 flex items-center gap-2"><span className="inline-block w-2 h-6 bg-blue-600 rounded-full"></span>Create a Blog</h2>
+                  <form onSubmit={handleBlogSubmit} className="space-y-4">
+                    <input
                       type="text"
-                      placeholder="name"
+                      placeholder="Name"
                       value={name}
-                      onChange={(e) => setTitle(e.target.value)}
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-blue-50"
                       required
                     />
                     <input
@@ -444,19 +432,19 @@ export default function UserDashboard() {
                       placeholder="Title"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-blue-50"
                       required
                     />
                     <textarea
                       placeholder="Description"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                      className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 bg-blue-50"
                       rows="6"
                       required
                     />
                     <div className="flex items-center space-x-4">
-                      <label className="flex items-center cursor-pointer bg-gray-200 p-2 rounded-lg shadow-md">
+                      <label className="flex items-center cursor-pointer bg-blue-100 p-2 rounded-lg shadow-md hover:bg-blue-200 transition">
                         <span className="mr-2">📷 Upload Image</span>
                         <input
                           type="file"
@@ -469,13 +457,13 @@ export default function UserDashboard() {
                         <img
                           src={URL.createObjectURL(image)}
                           alt="Preview"
-                          className="w-20 h-20 object-cover rounded-lg"
+                          className="w-20 h-20 object-cover rounded-lg border-2 border-blue-200"
                         />
                       )}
                     </div>
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg transition-colors text-base shadow-md"
                     >
                       Publish Blog
                     </button>

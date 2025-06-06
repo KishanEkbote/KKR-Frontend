@@ -224,7 +224,13 @@ export default function BlogPage() {
             >
               <div className="relative h-48">
                 <img
-                  src={`${API_PATH}${post.image}`}
+                  src={
+                    post.image
+                      ? post.image.startsWith('http')
+                        ? post.image
+                        : `${API_PATH}${post.image}`
+                      : '/Images/default_blog.jpg'
+                  }
                   alt={post.title}
                   className="w-full h-full object-cover"
                 />
@@ -316,7 +322,13 @@ export default function BlogPage() {
             
             <div className="relative h-56 sm:h-72 md:h-96">
               <img
-                src={`${API_PATH}${selectedBlog.image}`}
+                src={
+                  selectedBlog.image
+                    ? selectedBlog.image.startsWith('http')
+                      ? selectedBlog.image
+                      : `${API_PATH}${selectedBlog.image}`
+                    : '/Images/default_blog.jpg'
+                }
                 alt={selectedBlog.title}
                 className="w-full h-full object-cover"
               />
