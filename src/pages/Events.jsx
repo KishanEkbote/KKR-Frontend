@@ -180,12 +180,7 @@ const Events = () => {
                           </span>
                         </div>
                         <p className="text-gray-600 mb-4 line-clamp-3">{event.description}</p>
-                        <button
-                          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                          onClick={() => handleViewDetails(event.id)}
-                        >
-                          View Details
-                        </button>
+                        {/* Removed View Details button */}
                       </div>
                     </motion.div>
                   ))}

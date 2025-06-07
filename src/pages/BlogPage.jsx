@@ -16,14 +16,17 @@ export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categories, setCategories] = useState(["All"]);
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [userRole, setUserRole] = useState(null);
   const postsPerPage = 6;
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     // Check if user is logged in
     const userId = localStorage.getItem("userId");
+    const role = localStorage.getItem("userRole");
     if (userId) {
       setIsAuthenticated(true);
+      setUserRole(role);
       // Fetch user data (if needed)
     }
     // Fetch blogs from backend for all users
@@ -121,12 +124,14 @@ export default function BlogPage() {
           </button>
         ) : (
           <div className="mt-4 flex justify-center space-x-4">
-            <button
-              onClick={() => navigate("/user-dashboard")}
-              className="bg-green-600 text-white py-2 px-5 rounded-lg hover:bg-green-700 transition"
-            >
-              Go to Dashboard
-            </button>
+            {userRole !== "admin" && (
+              <button
+                onClick={() => navigate("/user-dashboard")}
+                className="bg-green-600 text-white py-2 px-5 rounded-lg hover:bg-green-700 transition"
+              >
+                Go to Dashboard
+              </button>
+            )}
             <button
               onClick={handleLogout}
               className="bg-red-600 text-white py-2 px-5 rounded-lg hover:bg-red-700 transition"
@@ -224,13 +229,7 @@ export default function BlogPage() {
             >
               <div className="relative h-48">
                 <img
-                  src={
-                    post.image
-                      ? post.image.startsWith('http')
-                        ? post.image
-                        : `${API_PATH}${post.image}`
-                      : '/Images/default_blog.jpg'
-                  }
+                  src={post.image ? (post.image.startsWith('http') ? post.image : `${API_PATH}${post.image}`) : '/Images/default_blog.jpg'}
                   alt={post.title}
                   className="w-full h-full object-cover"
                 />
@@ -322,13 +321,7 @@ export default function BlogPage() {
             
             <div className="relative h-56 sm:h-72 md:h-96">
               <img
-                src={
-                  selectedBlog.image
-                    ? selectedBlog.image.startsWith('http')
-                      ? selectedBlog.image
-                      : `${API_PATH}${selectedBlog.image}`
-                    : '/Images/default_blog.jpg'
-                }
+                src={selectedBlog.image ? (selectedBlog.image.startsWith('http') ? selectedBlog.image : `${API_PATH}${selectedBlog.image}`) : '/Images/default_blog.jpg'}
                 alt={selectedBlog.title}
                 className="w-full h-full object-cover"
               />

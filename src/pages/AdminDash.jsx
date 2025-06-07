@@ -23,58 +23,48 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen bg-gray-900 text-white">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-900 text-white">
       {/* Sidebar */}
-      <div className="w-full md:w-64 bg-gray-800 shadow-lg p-4 md:p-5 flex flex-col justify-between">
+      <div className="w-full md:w-64 bg-gray-800 shadow-lg p-4 md:p-5 flex flex-col justify-between min-h-[70px] md:min-h-screen">
         <div>
-          <h1 className="text-xl font-bold text-blue-400 mb-6 border-b border-gray-700 pb-3">KKR Admin Panel</h1>
+          <h1 className="text-xl font-bold text-blue-400 mb-6 border-b border-gray-700 pb-3 text-center md:text-left">KKR Admin Panel</h1>
           <nav className="mt-5 space-y-2">
+            {/* Responsive nav buttons */}
             <button
-              className={`w-full flex items-center p-3 rounded-lg transition-colors ${
-                activeTab === "dashboard" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              }`}
+              className={`w-full flex items-center p-3 rounded-lg transition-colors text-sm md:text-base ${activeTab === "dashboard" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"}`}
               onClick={() => setActiveTab("dashboard")}
             >
               <Home className="mr-3" size={18} /> Dashboard
             </button>
             <button
-              className={`w-full flex items-center p-3 rounded-lg transition-colors ${
-                activeTab === "content" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              }`}
+              className={`w-full flex items-center p-3 rounded-lg transition-colors text-sm md:text-base ${activeTab === "content" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"}`}
               onClick={() => setActiveTab("content")}
             >
               <BarChart className="mr-3" size={18} /> Content Management
             </button>
             <button
-              className={`w-full flex items-center p-3 rounded-lg transition-colors ${
-                activeTab === "users" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              }`}
+              className={`w-full flex items-center p-3 rounded-lg transition-colors text-sm md:text-base ${activeTab === "users" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"}`}
               onClick={() => setActiveTab("users")}
             >
               <Users className="mr-3" size={18} /> User Management
             </button>
             <button
-              className={`w-full flex items-center p-3 rounded-lg transition-colors ${
-                activeTab === "analytics" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              }`}
+              className={`w-full flex items-center p-3 rounded-lg transition-colors text-sm md:text-base ${activeTab === "analytics" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"}`}
               onClick={() => setActiveTab("analytics")}
             >
               <PieChart className="mr-3" size={18} /> Analytics
             </button>
             <button
-              className={`w-full flex items-center p-3 rounded-lg transition-colors ${
-                activeTab === "locations" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"
-              }`}
+              className={`w-full flex items-center p-3 rounded-lg transition-colors text-sm md:text-base ${activeTab === "locations" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-200 hover:bg-gray-600"}`}
               onClick={() => setActiveTab("locations")}
             >
               <Map className="mr-3" size={18} /> Locations
             </button>
           </nav>
         </div>
-
-        <div>
+        <div className="mt-6 md:mt-0">
           <button
-            className="w-full flex items-center p-3 rounded-lg transition-colors bg-red-600 text-white hover:bg-red-700"
+            className="w-full flex items-center p-3 rounded-lg transition-colors bg-red-600 text-white hover:bg-red-700 text-sm md:text-base"
             onClick={handleLogout}
           >
             <LogOut className="mr-3" size={18} /> Logout
@@ -83,19 +73,19 @@ export default function AdminDashboard() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-2 md:p-6 overflow-y-auto bg-gray-900">
+      <div className="flex-1 p-2 md:p-6 overflow-y-auto bg-gray-900 min-h-[70px]">
         {isLoading ? (
-          <div className="flex items-center justify-center h-full">
+          <div className="flex items-center justify-center h-full min-h-[200px]">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : (
-          <>
+          <div className="space-y-6">
             {activeTab === "dashboard" && <Dashboard />}
             {activeTab === "content" && <ContentManagement />}
             {activeTab === "users" && <UserManagement />}
             {activeTab === "analytics" && <AnalyticsManagement />}
             {activeTab === "locations" && <LocationManagement />}
-          </>
+          </div>
         )}
       </div>
     </div>
@@ -108,7 +98,7 @@ function Dashboard() {
       <h2 className="text-2xl font-bold text-blue-400 mb-6">Dashboard Overview</h2>
       
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
           <div className="flex justify-between items-center">
             <div>
@@ -1124,7 +1114,7 @@ function AnalyticsManagement() {
       ) : (
         <>
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg border-l-4 border-blue-500">
               <div className="flex justify-between items-center">
                 <div>

@@ -70,7 +70,7 @@ const ItineraryPlanner = () => {
   const [showPOI, setShowPOI] = useState(false);
   const [travelMode, setTravelMode] = useState("driving-car"); // Options: driving-car, cycling, foot
   const [mapZoom, setMapZoom] = useState(7);
-  const [setMap] = useState(null);
+  const [ setMap] = useState(null);
 
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("savedTrips")) || [];
@@ -562,7 +562,7 @@ const ItineraryPlanner = () => {
                       : "bg-gray-100 border border-gray-300 text-gray-700"
                   }`}
                 >
-                  <Car size={18} className="mr-1" /> Car
+                  <Car size={10} className="mr-1" /> Car
                 </button>
                 <button
                   onClick={() => setTravelMode("cycling-regular")}
