@@ -229,7 +229,13 @@ export default function BlogPage() {
             >
               <div className="relative h-48">
                 <img
-                  src={post.image ? (post.image.startsWith('http') ? post.image : `${API_PATH}${post.image}`) : '/Images/default_blog.jpg'}
+                  src={(() => {
+                    if (!post.image) return '/Images/default_blog.jpg';
+                    if (post.image.startsWith('http')) return post.image;
+                    // Always ensure path starts with /uploads/
+                    const imgPath = post.image.startsWith('/uploads') ? post.image : `/uploads/${post.image.replace(/^uploads[\\/]/, '')}`;
+                    return `${API_PATH}${imgPath}`;
+                  })()}
                   alt={post.title}
                   className="w-full h-full object-cover"
                 />
@@ -321,7 +327,12 @@ export default function BlogPage() {
             
             <div className="relative h-56 sm:h-72 md:h-96">
               <img
-                src={selectedBlog.image ? (selectedBlog.image.startsWith('http') ? selectedBlog.image : `${API_PATH}${selectedBlog.image}`) : '/Images/default_blog.jpg'}
+                src={(() => {
+                  if (!selectedBlog.image) return '/Images/default_blog.jpg';
+                  if (selectedBlog.image.startsWith('http')) return selectedBlog.image;
+                  const imgPath = selectedBlog.image.startsWith('/uploads') ? selectedBlog.image : `/uploads/${selectedBlog.image.replace(/^uploads[\\/]/, '')}`;
+                  return `${API_PATH}${imgPath}`;
+                })()}
                 alt={selectedBlog.title}
                 className="w-full h-full object-cover"
               />
