@@ -24,7 +24,7 @@ const featuredHotels = [
     name: 'Hotel Kalaburagi Grand',
     image: '/Images/Hotels/Hotel VKG.jpg',
     rating: 4.5,
-    price: '₹2,500',
+    price: '2500',
     district: 'Kalaburagi',
     latitude: 17.3297,
     longitude: 76.8343
@@ -34,7 +34,7 @@ const featuredHotels = [
     name: 'Bidar Heritage Inn',
     image: '/Images/Hotels/hotel_lotus_park.jpg',
     rating: 4.2,
-    price: '₹2,200',
+    price: '2200',
     district: 'Bidar',
     latitude: 17.9104,
     longitude: 77.5199
@@ -44,7 +44,7 @@ const featuredHotels = [
     name: 'Raichur Plaza',
     image: '/Images/Hotels/plaza_hotel.jpg',
     rating: 4.0,
-    price: '₹2,000',
+    price: '2000',
     district: 'Raichur',
     latitude: 16.2120,
     longitude: 77.3439
@@ -266,12 +266,12 @@ const Hotels = () => {
               />
               <div className="absolute inset-0 bg-black/10 bg-opacity-40 flex items-end px-3">
                 <div className="p-5 md:p-8 text-black max-w-3xl">
-                  <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-2 ">{hotel.name}</h1>
-                  <div className="flex items-center mb-2 ">
+                  <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:block hidden md:text-black text-white ">{hotel.name}</h1>
+                  <div className="items-center mb-2 md:flex hidden ">
                     {renderStars(hotel.rating)}
                     <span className="ml-2">{hotel.rating}/5</span>
                   </div>
-                  <p className="text-base md:text-xl mb-2 md:mb-4">{hotel.location}  {hotel.price} per night</p>
+                  <p className="text-base md:text-xl mb-2 md:mb-4 md:block hidden">{hotel.location}  {hotel.price} per night</p>
                   <button 
                     className="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-md transition duration-300 text-sm md:text-base"
                     onClick={() => {

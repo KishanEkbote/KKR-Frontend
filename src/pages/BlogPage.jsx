@@ -239,11 +239,8 @@ export default function BlogPage() {
               <div className="relative h-48">
                 <img
                   src={(() => {
-                    if (!post.image) return '/Images/default_blog.jpg';
-                    if (post.image.startsWith('http')) return post.image;
-                    // Always ensure path starts with /uploads/
-                    const imgPath = post.image.startsWith('/uploads') ? post.image : `/uploads/${post.image.replace(/^uploads[\\/]/, '')}`;
-                    return `${API_PATH}${imgPath}`;
+                    if (!post.image || !post._id) return '/Images/default_blog.jpg';
+                    return `${API_PATH}/blogs/image/${post._id}`;
                   })()}
                   alt={post.title}
                   className="w-full h-full object-cover"
@@ -337,10 +334,8 @@ export default function BlogPage() {
             <div className="relative h-56 sm:h-72 md:h-96">
               <img
                 src={(() => {
-                  if (!selectedBlog.image) return '/Images/default_blog.jpg';
-                  if (selectedBlog.image.startsWith('http')) return selectedBlog.image;
-                  const imgPath = selectedBlog.image.startsWith('/uploads') ? selectedBlog.image : `/uploads/${selectedBlog.image.replace(/^uploads[\\/]/, '')}`;
-                  return `${API_PATH}${imgPath}`;
+                  if (!selectedBlog.image || !selectedBlog._id) return '/Images/default_blog.jpg';
+                  return `${API_PATH}/blogs/image/${selectedBlog._id}`;
                 })()}
                 alt={selectedBlog.title}
                 className="w-full h-full object-cover"
