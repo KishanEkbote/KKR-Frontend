@@ -262,16 +262,16 @@ const Hotels = () => {
               <img 
                 src={hotel.image} 
                 alt={hotel.name} 
-                className="w-full h-56 md:h-80 lg:h-96 object-cover"
+                className="w-full h-56 md:h-80 lg:h-96 object-contain"
               />
-              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
-                <div className="p-4 md:p-8 text-white max-w-3xl">
-                  <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-2">{hotel.name}</h1>
-                  <div className="flex items-center mb-2">
+              <div className="absolute inset-0 bg-black/10 bg-opacity-40 flex items-end px-3">
+                <div className="p-5 md:p-8 text-black max-w-3xl">
+                  <h1 className="text-xl md:text-3xl lg:text-4xl font-bold mb-2 ">{hotel.name}</h1>
+                  <div className="flex items-center mb-2 ">
                     {renderStars(hotel.rating)}
                     <span className="ml-2">{hotel.rating}/5</span>
                   </div>
-                  <p className="text-base md:text-xl mb-2 md:mb-4">{hotel.location} - {hotel.price} per night</p>
+                  <p className="text-base md:text-xl mb-2 md:mb-4">{hotel.location}  {hotel.price} per night</p>
                   <button 
                     className="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-6 py-2 rounded-md transition duration-300 text-sm md:text-base"
                     onClick={() => {

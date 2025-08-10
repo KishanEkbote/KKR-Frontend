@@ -29,26 +29,35 @@ export default function BlogPage() {
       setUserRole(role);
       // Fetch user data (if needed)
     }
-    // Fetch blogs from backend for all users
+    // Move async function outside and call it
     const fetchBlogs = async () => {
       try {
         setLoading(true);
+        console.log('Fetching blogs from:', `${API_PATH}/blogs`);
         const response = await axios.get(`${API_PATH}/blogs`);
+        console.log('Blogs response:', response.data);
+        if (!response.data || !Array.isArray(response.data)) {
+          throw new Error('Invalid response format');
+        }
         const blogs = response.data;
+        console.log('Number of blogs:', blogs.length);
+        if (blogs.length === 0) {
+          console.log('No blogs found in the response');
+        }
         setAllBlogPosts(blogs);
         setBlogPosts(blogs);
-
         // Extract unique categories
         const uniqueCategories = [...new Set(blogs.map(blog => blog.category || "Uncategorized"))];
         setCategories(["All", ...uniqueCategories]);
+        console.log('Categories:', uniqueCategories);
       } catch (error) {
         console.error("Error fetching blogs:", error);
+        console.error("Error details:", error.response?.data || error.message);
         setError("Failed to load blog posts. Please try again later.");
       } finally {
         setLoading(false);
       }
     };
-
     fetchBlogs();
   }, []);
 
