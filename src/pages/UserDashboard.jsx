@@ -31,7 +31,7 @@ export default function UserDashboard() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
     console.log("userId: ", userId);
     if (!userId) {
       navigate("/login"); // Redirect to login if not authenticated
@@ -96,7 +96,7 @@ export default function UserDashboard() {
   const handleProfileSubmit = async (event) => {
     event.preventDefault();
     
-    const userId = localStorage.getItem("userId");
+    const userId = sessionStorage.getItem("userId");
     if (!userId) return;
     
     const profileData = {
@@ -119,7 +119,7 @@ export default function UserDashboard() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("authToken")}`
+          "Authorization": `Bearer ${sessionStorage.getItem("authToken")}`
         },
         body: JSON.stringify(profileData)
       });
@@ -170,7 +170,7 @@ export default function UserDashboard() {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("image", image);
-    formData.append("author", localStorage.getItem("userId"));
+    formData.append("author", sessionStorage.getItem("userId"));
   
     try {
       const response = await fetch(`${API_PATH}/blogs/create`, {
@@ -240,8 +240,8 @@ export default function UserDashboard() {
                   </button>
                   <button 
                     onClick={() => {
-                      localStorage.removeItem("userId");
-                      localStorage.removeItem("authToken");
+                      sessionStorage.removeItem("userId");
+                      sessionStorage.removeItem("authToken");
                       navigate("/blog");
                     }}
                     className="w-full py-2 px-4 rounded-lg bg-red-600 text-white mt-4 font-semibold hover:bg-red-700 transition-colors duration-200 shadow"

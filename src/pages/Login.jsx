@@ -28,9 +28,9 @@ export default function LoginPage() {
         throw new Error(data.message || "Login failed");
       }
       
-      localStorage.setItem("authToken", data.token);
-      localStorage.setItem("userRole", data.role);
-      localStorage.setItem("userId", data._id);
+      sessionStorage.setItem("authToken", data.token);
+      sessionStorage.setItem("userRole", data.role);
+      sessionStorage.setItem("userId", data._id);
       
       alert("Login successful!");
 

@@ -17,8 +17,8 @@ export default function AdminDashboard() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("userRole");
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("userRole");
     navigate("/login");
   };
 
@@ -728,7 +728,7 @@ function LocationManagement() {
         // In a real app, this would be an API call
         // const response = await fetch(`${API_PATH}/locations`, {
         //   headers: {
-        //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        //     'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`
         //   }
         // });
         // const data = await response.json();
@@ -1027,7 +1027,7 @@ function AnalyticsManagement() {
         // In a real app, this would be an API call
         // const response = await fetch(`${API_PATH}/analytics`, {
         //   headers: {
-        //     'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+        //     'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`
         //   }
         // });
         // const data = await response.json();
@@ -1274,7 +1274,7 @@ function UserManagement() {
       try {
         const response = await fetch('http://localhost:5000/users/', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+            'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`
           }
         });
         
@@ -1300,7 +1300,7 @@ function UserManagement() {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+          'Authorization': `Bearer ${sessionStorage.getItem('authToken')}`
         },
         body: JSON.stringify({ role: newRole })
       });

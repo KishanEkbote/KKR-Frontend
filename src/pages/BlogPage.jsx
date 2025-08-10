@@ -22,8 +22,8 @@ export default function BlogPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     // Check if user is logged in
-    const userId = localStorage.getItem("userId");
-    const role = localStorage.getItem("userRole");
+    const userId = sessionStorage.getItem("userId");
+    const role = sessionStorage.getItem("userRole");
     if (userId) {
       setIsAuthenticated(true);
       setUserRole(role);
@@ -63,7 +63,7 @@ export default function BlogPage() {
 
   // Logout function
   const handleLogout = () => {
-    localStorage.removeItem("userId"); // Remove user session
+    sessionStorage.removeItem("userId"); // Remove user session
     setIsAuthenticated(false);
     navigate("/login"); // Redirect to login page
   };
