@@ -133,8 +133,8 @@ export default function LandingPage() {
       </section>
 
       <footer className="p-4 md:p-6 bg-black text-center text-white text-xs md:text-base">
-        <p> A Site Developed by : Kishan</p>
-        <p>&copy; 2025 Kalyan Karnataka Tourism. All Rights Reserved.</p>
+        <p>&copy; 2025 All Rights Reserved <b>Kalyan Karnataka Tourism</b> </p>
+        <p> A site developed by <b>Kishan Ekbote </b>| MCA 2023-25 | School of Computer Science | Central University of Karnataka </p>
       </footer>
     </div>
   );
